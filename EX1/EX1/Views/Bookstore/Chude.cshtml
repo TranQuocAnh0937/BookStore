@@ -1,0 +1,21 @@
+﻿@model IEnumerable<EX1.Models.CHUDE>
+
+<div id="nav">
+    <ul>
+        <li class="cat" style="border-top: 1px solid #000;">Pages</li>
+        <li>
+            @foreach (var item in Model)
+            {
+                <a href="@Url.Action("SPTheochude", "BookStore", new { id = item.MaCD })" class="list-group-item">@item.TenChuDe</a>
+            }
+        </li>
+        <li class="cat">Categories</li>
+        <li><a href="http://all-free-download.com/free-website-templates/">Cat 1</a></li>
+        <li><a href="http://all-free-download.com/free-website-templates/">Cat 2</a></li>
+        <li><a href="http://all-free-download.com/free-website-templates/">Cat 3</a></li>
+        <li><a href="http://all-free-download.com/free-website-templates/">Cat 4</a></li>
+        <li><a href="http://all-free-download.com/free-website-templates/">Cat 5</a></li>
+    </ul>
+</div>
+
+

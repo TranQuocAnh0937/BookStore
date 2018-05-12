@@ -1,0 +1,77 @@
+﻿@using EX1.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<EX1.Models.SACH>
+
+@helper Truncate(string input, int length)
+{
+if (input.Length < length)
+{
+        @input
+}
+else
+{
+        @input.Substring(0, length)<text>...</text>
+}
+}
+
+@{
+    ViewBag.Title = "Sach";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Quan ly thong tin sach</h2>
+
+<p>
+    @Html.ActionLink("THÊM MỚI", "Themmoisach")
+</p>
+<table class="table" border="1">
+    <tr>
+
+        <th style="width:200px"> Tên sách</th>
+        <th style="width:100px"> Đơn vị tính</th>
+        <th style="width:120px"> Giá bán</th>
+        <th style="width:300px"> Mô tả</th>
+        <th style="width:120px"> Ảnh bìa</th>
+        <th style="width:120px"> Tên chủ đề</th>
+        <th style="width:120px">NXB</th>
+        <th style="width:120px"> Ngày cập nhật</th>
+        <th style="width:200px"> </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tensach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Donvitinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dongia)
+            </td>
+            <td>
+                @Truncate(item.Mota, 100)
+            </td>
+            <td>
+                <img src="@Url.Content("~/Hinhsanpham/"+ item.Hinhminhhoa)" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CHUDE.MaCD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NHAXUATBAN.MaNXB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaycapnhat)
+            </td>
+
+            <td>
+                @Html.ActionLink("Sửa", "Suasach", new { id = item.Masach }) |
+                @Html.ActionLink("Chi tiết", "Chitietsach", new { id = item.Masach }) |
+                @Html.ActionLink("Xóa", "Xoasach", new { id = item.Masach })
+            </td>
+        </tr>
+    }
+
+</table>

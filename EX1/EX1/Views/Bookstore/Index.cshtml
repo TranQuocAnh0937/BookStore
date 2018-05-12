@@ -1,0 +1,33 @@
+﻿@using EX1.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<SACH>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div id="content-main" class="entry">
+    @foreach (var sach in Model)
+    {
+        <center>
+            <a href="@Url.Action("Details", "Bookstore", new { id = sach.Masach })">
+                <img alt="@sach.Tensach" src="~/img/@sach.Hinhminhhoa" width="200" />
+            </a>
+        </center>
+        <div>
+            <br />
+            <h4 style="text-align:center">
+                @sach.Tensach
+            </h4>
+        </div>
+    }
+</div>
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model,page=>Url.Action("Index",new{ page=page}))
+    </div>
+    <style>
+        .MenuTrang li{
+            display:inline;
+        }
+    </style>
+Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount;

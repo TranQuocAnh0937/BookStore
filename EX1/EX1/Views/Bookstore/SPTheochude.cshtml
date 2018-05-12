@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "SPTheochude";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2>SPTheochude</h2>
+<div id="content-main" class="entry">
+    @foreach (var sach in Model)
+    {
+        <center>
+            <a href="@Url.Action("Details", "Bookstore", new { id = sach.Masach })">
+                <img alt="@sach.Tensach" src="~/img/@sach.Hinhminhhoa" width="200" />
+            </a>
+        </center>
+        <div>
+            <br />
+            <h4 style="text-align:center">
+                @sach.Tensach
+            </h4>
+        </div>
+    }
+</div>

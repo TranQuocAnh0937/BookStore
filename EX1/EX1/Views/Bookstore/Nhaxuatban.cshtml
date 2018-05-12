@@ -1,0 +1,20 @@
+﻿@model IEnumerable<EX1.Models.NHAXUATBAN>
+
+<div id="nav-right" style="margin-bottom:5px;">
+    <ul>
+        <li class="cat" style="border-top: 1px solid #000;">About this site</li>
+        <li style="text-align:center">
+
+            <img src="~/Images/profile.jpg" alt="" /> <br />
+            Here you can describe what your website is about
+        </li>
+        <li class="cat" style="border-top: 1px solid #333;">Nhà xuất bản</li>
+        <li>
+            @foreach (var item in Model)
+            {
+                <a href="@Url.Action("SPTheoNXB", "BookStore", new { id = item.MaNXB })" class="list-group-item">@item.TenNXB</a>
+            }
+        </li>
+    </ul>
+</div>
+
